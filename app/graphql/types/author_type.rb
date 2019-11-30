@@ -9,6 +9,7 @@ class Types::AuthorType < Types::BaseObject
   field :full_name, String, null: true
 
   field :coordinates, Types::CoordinatesType, null: false
+  field :publication_years, [Int], null: false
 
   def full_name
     ([object.first_name, object.last_name].compact).join(' ')
