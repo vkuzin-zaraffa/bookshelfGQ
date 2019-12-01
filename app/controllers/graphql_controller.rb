@@ -8,7 +8,12 @@ class GraphqlController < ApplicationController
     variables = ensure_hash(params[:variables])
     query = params[:query]
     operation_name = params[:operationName]
+
+    session = Session.find_by_key(request.headers['Authorization'])
+    Rails.logger.info("Logged in as \e[31m#{session&.user&.email} \e[0m")
+
     context = {
+        current_user: session&.user
       # Query context goes here, for example:
       # current_user: current_user,
     }
