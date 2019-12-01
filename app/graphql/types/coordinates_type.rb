@@ -8,4 +8,8 @@ class Types::CoordinatesType < Types::BaseObject
   def longitude
     object.last
   end
+
+  def self.authorized?(obj, cnt)
+    obj.first > 10 && obj.last < 10
+  end
 end
